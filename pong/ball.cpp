@@ -3,28 +3,37 @@
 
 
 ball::ball(int x, int y, int direction)
-: sprite(16, 16, x - 8, y - 8, tris::color(255, 255, 255, 255)), sx(1 * direction), x(x - 8), y(y - 8)
+: sprite(16, 16, x - 8, y - 8, tris::color(255, 255, 255, 255)), sx(1 * direction), x(x), y(y)
 {}
 
 void ball::update(tris::engine* eng)
 {
-    this->sx *= 1.001;
-    this->sy *= 1.001;
+//    this->sx *= 1.001;
+//    this->sy *= 1.001;
     this->sy += this->sa / 720.0;
     this->sprite.angle += this->sa;
-    this->sprite.rect.x = this->x += this->sx;
-    this->sprite.rect.y = this->y += this->sy;
+    this->x += this->sx;
+    this->y += this->sy;
 
-    if (this->y + 8 < 0)
+    if (this->y < 0)
     {
-        this->y += -(this->y + 8);
+        this->y += -(this->y);
         this->sy = -this->sy;
     }
-    else if (this->y + 8 >= eng->graphics.window_height)
+    else if (this->y >= eng->graphics.window_height)
     {
-        this->y += eng->graphics.window_height - (this->y + 8);
+        this->y += eng->graphics.window_height - (this->y);
         this->sy = -this->sy;
     }
+
+    if (this->x >= eng->graphics.window_width)
+    {
+        this->x += eng->graphics.window_width - (this->x);
+        this->sx = -this->sx;
+    }
+
+    this->sprite.rect.x = -8 + this->x;
+    this->sprite.rect.y = -8 + this->y;
 }
 
 void ball::on_added(tris::engine* eng)
