@@ -8,8 +8,8 @@ paddle::paddle(int x, int y)
 
 void paddle::update(tris::engine* eng)
 {
-    this->x += this->sx *= 0.80;
-    this->y += this->sy *= 0.80;
+    this->x += this->sx *= 0.90;
+    this->y += this->sy *= 0.90;
 
     if (this->x + 8 < 0)
         this->x = -8;

@@ -3,6 +3,7 @@
 
 #include "../tris/tris.hpp"
 
+#include "particle.hpp"
 #include "paddle.hpp"
 #include "ball.hpp"
 

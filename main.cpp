@@ -7,6 +7,7 @@
 
 int main ()
 {
+    srand(time(nullptr));
     tris::engine game("Tris Pong", 800, 640, 60);
 
     pong_service* srv = new pong_service();
