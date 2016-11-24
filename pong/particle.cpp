@@ -32,5 +32,6 @@ void particle::on_added(tris::engine* eng)
 void particle::on_removed(tris::engine* eng)
 {
     eng->graphics.remove_box(&this->sprite);
+    tris::entity::on_removed(eng);
 }
 

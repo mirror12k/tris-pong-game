@@ -8,7 +8,7 @@ class ball : public tris::entity
 public:
     tris::box sprite;
 
-    float sx, sy = 0, sa = -1;
+    float sx, sy = 0, sa = 0;
     float x, y;
 
     int fade_frame = 0;

@@ -7,7 +7,9 @@
 #include "paddle.hpp"
 #include "ball.hpp"
 
-class pong_service : public tris::service_entity
+#include "block.hpp"
+
+class pong_service : public tris::subscription_service_entity<block>
 {
 public:
     paddle* player_paddle;
@@ -16,7 +18,4 @@ public:
     pong_service();
 
     void update(tris::engine* eng);
-
-    void on_added(tris::engine* eng);
-    void on_removed(tris::engine* eng);
 };
