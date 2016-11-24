@@ -3,6 +3,7 @@
 
 
 #include "particle.hpp"
+#include "ball_fade_particle.hpp"
 
 ball::ball(int x, int y, int direction)
 : sprite(16, 16, x - 8, y - 8, tris::color(255, 255, 255, 255)), sx(1 * direction), x(x), y(y)
@@ -10,6 +11,9 @@ ball::ball(int x, int y, int direction)
 
 void ball::update(tris::engine* eng)
 {
+//    if ((this->fade_frame = (this->fade_frame + 1) % 2) == 0)
+    eng->update_ctx.add_entity(new ball_fade_particle(this->x, this->y, this->sprite.angle));
+
 //    this->sx *= 1.001;
 //    this->sy *= 1.001;
     this->sy += this->sa / 720.0;
