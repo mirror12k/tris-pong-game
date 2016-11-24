@@ -5,7 +5,7 @@
         (Y) >= (RECT).y && (Y) < (RECT).y + (RECT).h)
 
 pong_service::pong_service()
-: tris::subscription_service_entity<block>("pong_service"), player_paddle(new paddle(100, 320)), pong_ball(new ball(400, 320, 3))
+: tris::subscription_service_entity<block>("pong_service"), player_paddle(new paddle(100, 320)), pong_ball(new ball(400, 320, -3))
 {}
 
 void pong_service::update(tris::engine* eng)
@@ -41,7 +41,7 @@ void pong_service::update(tris::engine* eng)
 
         this->pong_ball->x = eng->graphics.window_width / 2;
         this->pong_ball->y = eng->graphics.window_height / 2;
-        this->pong_ball->sx = 3;
+        this->pong_ball->sx = -3;
         this->pong_ball->sy = 0;
         this->pong_ball->sa = 0;
         this->pong_ball->sprite.angle = 0;
